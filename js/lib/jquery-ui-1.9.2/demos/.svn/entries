@@ -1,0 +1,180 @@
+10
+
+dir
+30
+svn://dev.ck12.org/support/trunk/support-modal/js/lib/jquery-ui-1.9.2/demos
+svn://dev.ck12.org/support
+
+
+
+2012-12-19T23:05:33.888187Z
+28
+felix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5b35ffdd-e1fc-4fd5-bc08-0602b0c94362
+
+resizable
+dir
+
+show
+dir
+
+toggle
+dir
+
+slider
+dir
+
+removeClass
+dir
+
+widget
+dir
+
+switchClass
+dir
+
+progressbar
+dir
+
+tabs
+dir
+
+tooltip
+dir
+
+effect
+dir
+
+demos.css
+file
+
+
+
+
+2014-04-22T22:41:12.000000Z
+c7fc917de57fba6b610ad6191fc1a28a
+2012-12-19T23:05:33.888187Z
+28
+felix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+287
+
+dialog
+dir
+
+autocomplete
+dir
+
+accordion
+dir
+
+selectable
+dir
+
+position
+dir
+
+menu
+dir
+
+images
+dir
+
+toggleClass
+dir
+
+droppable
+dir
+
+draggable
+dir
+
+hide
+dir
+
+index.html
+file
+
+
+
+
+2014-04-22T22:41:12.000000Z
+ea28419d5769b2115f79bfd4243bc83e
+2012-12-19T23:05:33.888187Z
+28
+felix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1287
+
+datepicker
+dir
+
+button
+dir
+
+sortable
+dir
+
+animate
+dir
+
+addClass
+dir
+
+spinner
+dir
+

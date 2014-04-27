@@ -1,0 +1,29 @@
+#supportbox {
+    position:absolute;
+    background:rgba(0,0,0,0.2);
+    border-radius:14px;
+    padding:8px;
+    height:520px;
+    width: 800px;
+    z-index:999;
+}
+
+#zenDmodal-close {
+    position:absolute;
+    background:url(../img/close_big.png) 0 0 no-repeat;
+    width:46px;
+    height:46px;
+    display:block;
+    text-indent:-9999px;
+    top:-20px;
+    right:-28px;
+}
+
+#support-tab ul.ui-widget-header {
+	background-color:#A7CD67 !important;
+	background-image:none !important;
+	padding-bottom:0px !important;
+	padding-left: 4px !important;
+    /*border:none !important; */
+/*	line-height: 1px !important; */
+}

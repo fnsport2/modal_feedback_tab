@@ -1,0 +1,151 @@
+/*
+
+     Support Modal : 
+                 Using jquery-ui tabs to manage seperate forms to submit requests to zendesk.
+
+*/
+
+// CK-12 Host name 
+ck12host = "http://mirugai.ck12.org"
+
+requirejs.config({
+	baseUrl:ck12host+'/support/js/lib',
+	paths: {
+	'jqueryui': 'jquery-ui-1.9.2/jqueryui',
+	'jquery': 'jquery-1.8.3'
+	}
+});
+
+requirejs(['jquery'], function ($q2) {
+
+        $q2.noConflict(true);
+
+
+	requirejs(['jqueryui/tabs'], function () {
+
+		// This function loads the css on demand when require is called appending to head 
+		function loadCss(url) {
+		var link = document.createElement("link");
+		link.type = "text/css";
+		link.rel = "stylesheet";
+		link.href = url;
+		document.getElementsByTagName("head")[0].appendChild(link);
+		}
+
+		// Icon source for each tab.
+		var support_icon= ck12host+'/support/img/support_icon.png' 
+		var contenterror_icon= ck12host+'/support/img/cerror_icon.png'
+		var suggestionbox_icon= ck12host+'/support/img/suggestion_icon.png'
+		var testimonial_icon= ck12host+'/support/img/testimonial_icon.png'
+
+		// HTML we will inject into the document.
+		$q2.supportmodal = $q2('<div id="supportbox"></div>');
+		$q2.support_close = $q2('<a id ="ck12support-close" href="#"></a>');
+
+		// This updates the tabs with an iframe
+		function updatetabs(config){
+
+	    		$q2.support_close.click(function(e){
+				e.preventDefault();
+                		support_modal.close();
+                		$q2.supportmodal.empty();
+	    		});
+
+			// Pre-populate fields with data if available
+        		ck12_user_name = config.name;
+			ck12_user_email = config.email;
+			ck12_user_url= config.url;
+		
+			// Iframe soruce for each tab
+        		ck12_support_tab ='<iframe src="http://ck12support.zendesk.com/account/dropboxes/20105863?&name='+ck12_user_name+'&email='+ck12_user_email+'" width="760" height="425" frameborder="0"></iframe>';
+	
+			ck12_contenterror_tab = '<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHlaUFlvNnZrRzhPcWVWbzJ0ZGVFb1E6MQ&entry_0='+ck12_user_name+'&entry_1='+ck12_user_email+'&entry_2='+ck12_user_url+'" width="760" height="425" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
+
+			ck12_suggestionbox_tab ='<iframe src="http://ck12support.zendesk.com/account/dropboxes/20122308?&name='+ck12_user_name+'&email='+ck12_user_email+'" width="760" height="425" frameborder="0"></iframe>';
+
+			ck12_testimonials_tab = '<iframe src="https://docs.google.com/a/ck12.org/spreadsheet/embeddedform?formkey=dHM0SDZ1X0dabW8xWEw4S3J0cUE4OXc6MQ&entry_0='+ck12_user_name+'+&entry_1='+ck12_user_email+'" width="760" height="425" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
+			// Combine all tabs into a div	
+			$q2.support_tabs = $q2( '<div id="support-tab"> <ul> <li><a href="#tabs-1"><img src="'+support_icon+'" height="20px" width="20px">&nbsp;Support</a></li> <li><a href="#tabs-2"><img src="'+contenterror_icon+'" height="20px" width="20px">&nbsp;Content Error</a></li> <li><a href="#tabs-3"><img src="'+suggestionbox_icon+'" height="20px" width="20px">&nbsp;Suggestion Box</a></li> <li><a href="#tabs-4"><img src="'+ testimonial_icon+'" height="20px" width="20px">&nbsp;Testimonials</a></li> </ul> <div id="tabs-1">'+ ck12_support_tab +'</div> <div id="tabs-2">'+ ck12_contenterror_tab +'</div> <div id="tabs-3">' + ck12_suggestionbox_tab + '</div> <div id="tabs-4">' + ck12_testimonials_tab + ' </div> </div>');
+    		};
+
+
+		// Stuff we want to do once the document is ready.
+		$q2(function() {
+			$q2('body').append($q2.supportmodal);
+
+			$q2.support_close.click(function(e){
+			e.preventDefault();
+			support_modal.close();
+			$q2.supportmodal.empty();
+			});
+		loadCss('http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css');
+		loadCss(ck12host+'/support/css/modal.css');
+
+    		});
+    
+		// Based off of  Jack Moore's tutorial @ http://www.jacklmoore.com/notes/jquery-modal-tutorial
+		var support_modal = function() { 
+		
+			var method = {};
+		
+			method.isOpen=false;
+			// Centers the modal according window height & width	
+			method.center = function () {
+				var top, left;
+
+				top = Math.max($q2(window).height() - $q2.supportmodal.outerHeight(), 0) / 2;
+				left = Math.max($q2(window).width() - $q2.supportmodal.outerWidth(), 0) / 2;
+
+				$q2.supportmodal.css({
+					top:top + $q2(window).scrollTop(), 
+					left:left + $q2(window).scrollLeft()
+				});
+			};
+        
+			// Opens the modal; get the tab iframes and then append it to the dialog box before opening.
+			method.open = function(config){
+				method.isOpen=true;	
+				method.center();
+				$q2(window).resize()
+				$q2(window).bind('resize.supportmodal',method.center);
+           
+				if (config.name && config.email ){ 
+
+					updatetabs({name:config.name,email:config.email,url:config.url});
+				}
+				else 
+					updatetabs({name: "", email: "",url:config.url});
+
+				$q2.support_tabs.tabs({active:config.activetab});
+				$q2.supportmodal.append($q2.support_close,$q2.support_tabs);
+				$q2.supportmodal.show();
+			};
+		
+			// Close the modal, and set the isOpen flag back to false.
+			method.close = function(){
+				method.isOpen=false;	
+				$q2.supportmodal.hide();
+				$q2(window).unbind('resize.supportmodal');
+			};
+
+			$q2.supportmodal.hide();
+			return method;
+		}();
+
+		// Bind the modal action to the class
+		$q2('.ck12support-open').click(function(e){
+		e.preventDefault();
+		if (support_modal.isOpen==false){
+			support_modal.open({name: $q2('#ck12support').data('ck12-support.name'),
+			                   email: $q2('#ck12support').data('ck12-support.email'),
+			                   url: document.URL,
+			                   activetab: $q2(this).data('default') });}
+		});
+
+	return support_modal;
+
+	});
+});
+
+
+
