@@ -5,7 +5,7 @@ Custom feedback-tab example.
 
 
 
-A need  we ran into at the company I work for, was the ability to use mulitiple forms with Zendesk's feedback tab.
+Use mulitiple forms with Zendesk's feedback tab.
 https://support.zendesk.com/entries/20990726-Setting-up-your-Feedback-Tab-channel
 
 We wanted a way to be able to route different requests using the feedback tab's form in a centralized location, instead of having different links for each form/tab. Here is an approach we took using jquery-ui tabs, and requirejs. Once the app is loaded by require, the html is dynamically built and appended to the document.
