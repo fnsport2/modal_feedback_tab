@@ -1,5 +1,5 @@
 /*
-    An need  we ran into at the company I work for, was the ability
+    A need  we ran into at the company I work for, was the ability
     to use mulitiple forms with Zendesk's feedback tab.
     https://support.zendesk.com/entries/20990726-Setting-up-your-Feedback-Tab-channel
 
@@ -142,8 +142,8 @@ requirejs([ "jquery", "forms" ], function($q2, forms) {
             e.preventDefault();
             if (support_modal.isOpen === false) {
                 support_modal.open({
-                    name: $q2("#ck12support").data("ck12-support.name"),
-                    email: $q2("#ck12support").data("ck12-support.email"),
+                    name: $q2(".zenDmodal-open").data("feedback.name"),
+                    email: $q2(".zenDmodal-open").data("feedback.email"),
                     url: document.URL,
                     activetab: $q2(this).data("default")
                 });
