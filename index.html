@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script data-main="js/app" src="js/require.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<style>
+
+body
+{
+  background-color:white;
+
+}
+
+#nav-bar 
+{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 36em;
+  height: 4em;
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+li
+{
+  display: inline-block;
+  float: left;
+  padding-right: 2em;
+}
+
+.nav-text
+{
+  font-size: 0.85em;
+  font-family: sans-serif;
+  letter-spacing: 0.45em;
+}
+
+.icon
+{
+  display: block;
+  text-transform: uppercase;
+  color: darkslategrey;
+}
+
+.icon:before
+{
+  display: inline-block;
+  background: #878787; 
+  color: #e4e4e4;
+  width: 1.20em;
+  font-family: FontAwesome; 
+  margin-right: 0.75em;
+  text-align: center;
+  font-size: 1.36em;
+  padding: 0.36em;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.icon-home:before
+{
+  content:"\f015";
+}
+
+.icon-about:before
+{
+  content:"\f129";
+}
+
+.icon-contact:before
+{
+  content:"\f095";
+}
+
+#body-container
+{
+
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  -moz-border-radius: 0.45em;
+  -webkit-border-radius: 0.45em;
+  border-radius: 0.45em;
+  
+
+  -moz-box-shadow: 1em 1em 4em gray; 
+  -webkit-box-shadow: 1em 1em 4em gray;  
+  box-shadow: 1em 1em 4em gray;
+}
+
+#sample
+{
+  text-align: center;
+}
+
+.fa-dot-circle-o
+{
+  color: white;
+  font-size: 18em;
+  cursor: crosshair;
+}
+</style>
+</head>
+<body>
+<h2><i class="fa fa-github"></i><a href="http://www.github.com/fnsport2" style="text-decoration:none"> fnsport2</a>  </h2>
+<div id="fnsport2-feedback-tab" ><span> <a class="zenDmodal-open" data-feedback.name="Felix Nance" data-feedback.email="fnsport2@foo.com">Help</a></span></div>
+<div id="nav-bar">
+<nav>
+<ul>
+<li> <a class="icon icon-home "> <span class="nav-text">Home</span> </a></li>
+<li> <a class="icon icon-about"> <span class="nav-text">About</span></a> </li>
+<li> <a class="icon icon-contact"> <span class="nav-text">Contact</span></a></li>
+</nav>
+<p></p>
+</div>
+<div id="body-container">
+<h1 style="color:white;text-align:center"> Demo </h1>
+<p id="sample"><a  class="zenDmodal-open" href> <span><i class="fa fa-dot-circle-o"></i></span></a></p>
+</div>
+<br>
+<p> Click on the bullseye to see the demo or click <span><a class="zenDmodal-open" href>here</a></span></p>
+</body>
+</html>
