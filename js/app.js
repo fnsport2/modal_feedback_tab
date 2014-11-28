@@ -33,6 +33,10 @@ requirejs.config({
     }
 });
 
+// HTML templates.
+var HTMLmodal = '<div id="supportbox"></div>';
+var HTMLcloseModal = '<a id ="zenDmodal-close" href="#"></a>';
+
 /*
 *   Define our jquery 
 */
@@ -64,9 +68,11 @@ requirejs([ "jquery", "forms" ], function($q2, forms) {
         //  by appeding to the body.
         //  supportmodal - our container for the modal
         //  support_close - button to close the modal
-        $q2.supportmodal = $q2('<div id="supportbox"></div>');
-        $q2.support_close = $q2('<a id ="zenDmodal-close" href="#"></a>');
+        var _modal_element = $q2(HTMLmodal); //$q2.supportmodal = $q2(HTMLmodal);
+        var _closeButton_element = $q2(HTMLCloseModal); //$q2.support_close = $q2(HTMLCloseModal);
 
+        // Close function for
+         
         //  This updates the tabs with an iframe
         function updatetabs(c) {
             $q2.support_close.click(function(e) {
@@ -75,13 +81,15 @@ requirejs([ "jquery", "forms" ], function($q2, forms) {
                 $q2.supportmodal.empty();
             });
 
-            //  Forms.update will return a div 
-            //  with all tabs, accepts a object
-            //  {name:<name>,email:<emial>,url:<url>} 
+            // Get the HTML for the tabs, using
+            // forms.update function passing in any
+            // available user info as an object.
             $q2.support_tabs = $q2(forms.update(c));
         }
 
         // Stuff we want to do once the document is ready.
+        // On ready, add the support modal to the HTML body.
+        // Bind a function to the click event on the invocking link.
         $q2(function() {
             $q2("body").append($q2.supportmodal);
             $q2.support_close.click(function(e) {
