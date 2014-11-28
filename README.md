@@ -3,7 +3,7 @@ modal_feedback_tab
 
 Custom feedback-tab example.
 
-Live Demo: http://intense-plains-4785.herokuapp.com
+Live Demo: http://fnsport2.github.io/modal_feedback_tab/
 
 Use mulitiple forms with Zendesk's feedback tab.
 https://support.zendesk.com/entries/20990726-Setting-up-your-Feedback-Tab-channel
